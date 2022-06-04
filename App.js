@@ -3,7 +3,7 @@ import { Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import SearchSreen from './src/screens/SearchSreen';
+import SearchScreen from './src/screens/SearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -53,7 +53,7 @@ function SettingsScreen({ navigation }) {
 function MyStack() {
   return (
     <Stack.Navigator initialRouteName="Search">
-      <Stack.Screen name="Search" component={SearchSreen} options={{ title: 'Business Search' }} />
+      <Stack.Screen name="Search" component={SearchScreen} options={{ title: 'Business Search' }} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />

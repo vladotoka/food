@@ -12,7 +12,7 @@ export default () => {
         params: {
           limit: 50,
           term: searchTerm,
-          location: 'm259ne'
+          location: 'Venice'
         }
       });
       setResults(response.data.businesses);
