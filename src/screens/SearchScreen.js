@@ -13,9 +13,6 @@ const SearchScreen = () => {
   const filterResultsByPrice = (price) => {
 
     //price === '$' || '$$' || '$$$'
-    // return results ? results.filter(result => {
-    //   return result.price?.length === price.length;
-    // }) : null
     return results.filter(result => {
       if (!result.price && !result) { return result }
       return result.price?.length === price?.length;
@@ -23,9 +20,9 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={styles.page}>
+    <>
       <SearchBar term={term} onTermChange={onTermChange} onTermSubmit={() => searchApi(term)} />
-      {!errorMessage ? <Text> We have found {results?.length} results </Text> : <Text>{errorMessage}</Text>}
+      {!!errorMessage && <Text>{errorMessage}</Text>}
       <ScrollView>
         <ResultsList results={filterResultsByPrice('$')} title='Cost Effective' />
         <ResultsList results={filterResultsByPrice('$$')} title='Bit Pricer' />
@@ -33,14 +30,10 @@ const SearchScreen = () => {
         <ResultsList results={filterResultsByPrice('$$$$')} title='Luxury' />
         <ResultsList results={filterResultsByPrice()} title='Unspecified price range' />
       </ScrollView>
-    </View>
+    </>
 
   )
 }
 
-const styles = StyleSheet.create({
-  page: { flex: 1, backgroundColor: 'white' },
-
-})
 
 export default SearchScreen
