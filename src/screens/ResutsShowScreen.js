@@ -6,8 +6,6 @@ import ResultsDetail from '../components/ResultsDetail';
 const ResutsShowScreen = ({ route }) => {
   const [result, serResult] = useState(null);
 
-  console.log(result);
-
   const getResult = async (id) => {
     const response = await yelp.get(`/${id}`);
     serResult(response.data);
@@ -22,7 +20,7 @@ const ResutsShowScreen = ({ route }) => {
 
   return (
     <View>
-      <Text>{route.params.screenTitle}</Text>
+      <Text>type: {result.categories.map((item) => item.title).join(', ')}</Text>
       <FlatList
         data={result.photos}
         keyExtractor={(photo) => photo}
